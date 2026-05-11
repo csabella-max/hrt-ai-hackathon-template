@@ -43,6 +43,17 @@ RECOMMENDATIONS = {
     "team_communication": "Hold a pre-launch huddle to align the team on what is launching, how to make it, what to say to customers, and where to find support resources.",
 }
 
+REGION_COACHES = {
+    "Desert": "Jordan Blake",
+    "Coastal": "Morgan Ellis",
+    "Mountain": "Taylor Brooks",
+    "Valley": "Casey Rivera",
+    "Pacific": "Riley Bennett",
+    "Canyon": "Avery Collins",
+    "Summit": "Cameron Hayes",
+    "Red Rock": "Parker Lane",
+}
+
 THRESHOLD_READY = 75
 THRESHOLD_AT_RISK = 60
 THRESHOLD_RECOMMENDATION = 65
@@ -85,8 +96,19 @@ df = load_data()
 
 st.sidebar.title("Filter")
 st.sidebar.markdown("---")
-shop_options = ["All Shops"] + sorted(df["shop_name"].tolist())
+
+region_names = sorted(df["region"].unique().tolist())
+region_display_map = {r: f"{r} (Coach: {REGION_COACHES[r]})" for r in region_names}
+region_display_options = ["All Regions"] + [region_display_map[r] for r in region_names]
+selected_region_display = st.sidebar.selectbox("Select a Region", options=region_display_options)
+display_to_region = {"All Regions": "All Regions", **{v: k for k, v in region_display_map.items()}}
+selected_region = display_to_region[selected_region_display]
+
+region_df = df if selected_region == "All Regions" else df[df["region"] == selected_region]
+all_shops_label = "All Shops" if selected_region == "All Regions" else f"All Shops — {selected_region}"
+shop_options = [all_shops_label] + sorted(region_df["shop_name"].tolist())
 selected_shop = st.sidebar.selectbox("Select a Shop", options=shop_options)
+
 st.sidebar.markdown("---")
 st.sidebar.markdown("**Score Guide**")
 st.sidebar.markdown("🟢 **Ready** — 75 or above")
@@ -101,9 +123,9 @@ st.sidebar.markdown("🚨 **At Risk** — Immediate action required")
 
 # ── Filter Application ────────────────────────────────────────────────────────
 
-if selected_shop == "All Shops":
-    view_df = df.copy()
-    view_label = "All Shops"
+if selected_shop == all_shops_label:
+    view_df = region_df.copy()
+    view_label = "All Shops" if selected_region == "All Regions" else f"{selected_region} Region"
     is_single_shop = False
 else:
     view_df = df[df["shop_name"] == selected_shop].copy()
@@ -117,9 +139,11 @@ st.subheader(f"Limited-Time Offer Launch Readiness — {view_label}")
 st.markdown(
     "This dashboard helps field operations leaders identify which shops are ready for the upcoming "
     "LTO launch, where gaps exist across key readiness areas, and what actions to take before launch day. "
-    "Use the filter in the sidebar to view the full fleet or drill into a specific shop. "
+    "Use the filters in the sidebar to view the full fleet, compare readiness by region, or drill into a specific shop. "
     "**Scores below 65 trigger specific action recommendations.**"
 )
+if not is_single_shop and selected_region != "All Regions":
+    st.caption(f"Business Coach: {REGION_COACHES[selected_region]}")
 st.divider()
 
 # ── KPI Cards ─────────────────────────────────────────────────────────────────
@@ -260,6 +284,7 @@ if is_single_shop:
     with info_col:
         st.markdown(
             f"**Region:** {shop_row['region']}  |  "
+            f"**Business Coach:** {shop_row['business_coach']}  |  "
             f"**Manager:** {shop_row['manager_name']}  |  "
             f"**Overall Score:** {overall:.1f} / 100"
         )
@@ -291,11 +316,12 @@ else:
     st.subheader("Shop Readiness Table")
     st.caption("Sorted by Overall Score. All scores are out of 100. Click a column header to re-sort.")
 
-    display_cols = ["shop_name", "region", "manager_name", "risk_tier"] + SCORE_COLS + ["computed_overall"]
+    display_cols = ["shop_name", "region", "business_coach", "manager_name", "risk_tier"] + SCORE_COLS + ["computed_overall"]
     display_df = view_df[display_cols].copy()
     display_df = display_df.rename(columns={
         "shop_name": "Shop",
         "region": "Region",
+        "business_coach": "Business Coach",
         "manager_name": "Manager",
         "risk_tier": "Priority Tier",
         "computed_overall": "Overall Score",
@@ -317,7 +343,7 @@ else:
         width="stretch",
         hide_index=True,
         column_config=column_config,
-        height=460,
+        height=560,
     )
 
 st.divider()
