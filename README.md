@@ -1,49 +1,101 @@
-# 🎉 HRT AI Hackathon Template
 
-A GitHub Codespace template for the Hospitality, Recreation, and Tourism (HRT) Applied Research Hackathon. Build a working Streamlit prototype with Claude — no coding experience required.
+# QSR LTO Field Readiness Dashboard
 
-## Getting Started
+## Project Overview
 
-1. Click **Code** → **Create Codespace on main**
-2. Wait for the environment to set up (1~5 min). The terminal will tell you when everything is ready.
-3. Click the **Claude** (orange star) icon at the top right corner
-4. Sign in with your **Claude Team** account
-5. Tell Claude what you want to build! For example:
-   > "Build a dashboard that shows hotel occupancy by city."
+The QSR LTO Field Readiness Dashboard is a simple Streamlit web app designed to help field operations leaders evaluate shop readiness before a limited-time offer launch.
 
-## Claude Commands
+The purpose of this project is to create a tool that mirrors the readiness checks that often occur before a new product or campaign goes live at the Shop Level of a Coffee QSR Drive Thru Concept. Instead of using a single overall score to assess launch readiness, the dashboard breaks readiness into specific operational categories so leaders can quickly see which shops are ready, which need support, and which areas may pose launch risk.
 
-Type these in the Claude Code chat at any time:
+This project uses only sample, fictional data. No real companies, employees, shops, or confidential operational data are included.
 
-| Command | What it does |
-|---------|-------------|
-| `/run` | Start your app and give you a clickable link to view it |
-| `/checkpoint` | Save your current progress |
-| `/back-to-checkpoint` | Restore to your last saved checkpoint |
-| `/restart` | Reset everything back to the very beginning |
-| `/write-readme` | Generate a README based on your current app |
-| `/push` | Publish your project to your own GitHub for your portfolio |
-| `/handoff` | Write a session summary to pick up later |
-| `/resume` | Load the previous session summary |
+## Why I Built This
 
-## What's Inside
+I wanted to build a project that directly connects to hospitality and quick-service restaurant operations and focuses on a core piece of my current role. In a QSR environment, a successful LTO launch depends on more than just having the product available. Teams also need training, product readiness, POS/menu accuracy, signage, smallwares, staffing support, recipe/process confidence, and clear communication.
 
-| File / Folder | Purpose |
-|---------------|---------|
-| `app.py` | Your Streamlit app — Claude writes all code here |
-| `CLAUDE.md` | Instructions that guide Claude's behavior |
-| `requirements.txt` | Python dependencies (Streamlit, Pandas) |
-| `data/` | Place your own datasets here (CSV, etc.) |
-| `data_ai/` | Claude saves any generated or crawled data here |
+This dashboard was created as a practical example of how field leaders could use a simple tool to identify launch gaps before they impact the guest or team experience.
 
-## Uploading Your Own Data
+## What the App Does
 
-1. In the left sidebar, right-click the `data/` folder
-2. Select **Upload...**
-3. Choose your file
+The dashboard allows users to review launch readiness across 15 fictional shop locations. Users can view all shops at once or select one specific shop from the sidebar.
 
-CSV files will automatically open as a table when you click them.
+The app evaluates each shop across eight readiness categories:
 
----
+- Training Completion
+- Product Availability
+- Signage / Materials
+- POS / Menu Readiness
+- Staffing Confidence
+- Equipment & Smallwares
+- Recipe / Process Confidence
+- Team Communication
 
-**Have fun building!** 🚀
+The app then calculates an overall readiness score and assigns each shop a "launch support tier".
+
+## Launch Support Tiers
+
+Each shop is placed into one of four launch support tiers:
+
+- **Ready**: The shop has strong overall readiness and no major weak areas/categories.
+- **Monitor**: The shop is mostly ready but may need some follow-up.
+- **Needs Support**: The shop has readiness gaps that should be addressed before launch.
+- **At Risk**: The shop has a low readiness score and needs immediate support before launch, or it will not launch on time at this location.
+
+These tiers are meant to help leaders prioritize where to spend time before an LTO goes live.
+
+## Key Features
+
+- Overall readiness score by shop
+- System-wide readiness summary
+- Risk tier summary
+- Category score chart
+- Shop-level readiness table
+- Single-shop scorecard view
+- Top risk areas
+- Recommended next actions/action items based on low-scoring categories
+
+## How to Use the App
+
+1. Open the Streamlit app.
+2. Use the sidebar to select **All Shops** or one specific shop.
+3. Review the KPI cards at the top of the dashboard.
+4. Look at the category score chart to identify the strongest and weakest readiness areas.
+5. Review the risk tier summary to see which shops may need support.
+6. Open the recommended next actions section to see practical steps leaders could take before launch.
+
+## Data Used
+
+The app uses AI-generated sample data for 15 fictional shop locations. The data is stored in:
+
+`data_ai/shop_readiness.csv`
+
+The data includes fictional shop names, regions, manager names, and readiness scores. This data was created for demonstration purposes only and should not be interpreted as real operational data.
+
+## How the Overall Score Works
+
+The overall readiness score is calculated by averaging the eight readiness categories for each shop.
+
+The app does not store the overall score directly in the data file. Instead, the score is calculated in the app, so it stays accurate even if the category scores change.
+
+## Recommended Actions
+
+The app includes rule-based recommendations. If a readiness category score is below the set threshold, the dashboard shows a recommended action.
+
+For example, if a shop has a low POS/Menu Readiness score, the app may recommend running a POS audit and testing the LTO build path, modifiers, pricing, and order flow before launch.
+
+These recommendations are meant to reflect practical field operations follow-up before a product launch.
+
+## Tools Used
+
+- Python
+- Streamlit
+- Pandas
+- Altair
+- GitHub Codespaces
+- Cloud Code / Claude
+
+## Project Reflection
+
+This project helped me better understand how AI coding tools can be used to create practical tools for hospitality and QSR operations. The most valuable part of the process was learning how to prompt the AI, especially more specifically in an advanced platform like Claude, review what it built, and continue improving the app based on real operational needs and what I would want to utilize a tool like this for in my day-to-day role. 
+
+For me, the project aligned well with field readiness and product launch execution because it showed how a simple dashboard can turn launch information into more actionable insights for leaders.

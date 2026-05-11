@@ -181,7 +181,9 @@ if not is_single_shop:
     for col_widget, tier in zip([t1, t2, t3, t4], tier_order):
         count = int(tier_counts.get(tier, 0))
         shop_word = "shop" if count == 1 else "shops"
-        body = f"**{tier_icons[tier]} {tier}**\n\n**{count}** {shop_word}\n\n{tier_desc[tier]}"
+        shops_in_tier = sorted(view_df[view_df["risk_tier"] == tier]["shop_name"].tolist())
+        names_block = "\n".join(f"- {name}" for name in shops_in_tier) if shops_in_tier else "_None_"
+        body = f"**{tier_icons[tier]} {tier}**\n\n**{count}** {shop_word} — {tier_desc[tier]}\n\n{names_block}"
         with col_widget:
             if tier == "Ready":
                 st.success(body)
@@ -205,6 +207,8 @@ cat_means.columns = ["col_key", "Score"]
 cat_means["Category"] = cat_means["col_key"].map(SCORE_LABELS)
 cat_means["Score"] = cat_means["Score"].round(1)
 cat_means["Status"] = cat_means["Score"].apply(score_status)
+cat_means = cat_means.sort_values("Score", ascending=True)
+category_order = cat_means["Category"].tolist()
 
 status_order = ["At Risk", "Needs Attention", "Ready"]
 color_range = ["#e74c3c", "#f39c12", "#2ecc71"]
@@ -214,7 +218,7 @@ bars = (
     .mark_bar(cornerRadius=4)
     .encode(
         x=alt.X("Score:Q", scale=alt.Scale(domain=[0, 100]), title="Average Score"),
-        y=alt.Y("Category:N", sort="-x", title=None),
+        y=alt.Y("Category:N", sort=category_order, title=None),
         color=alt.Color(
             "Status:N",
             scale=alt.Scale(domain=status_order, range=color_range),
@@ -233,7 +237,7 @@ text_labels = (
     .mark_text(align="left", dx=6, fontSize=13, fontWeight="bold")
     .encode(
         x=alt.X("Score:Q"),
-        y=alt.Y("Category:N", sort="-x"),
+        y=alt.Y("Category:N", sort=category_order),
         text=alt.Text("Score:Q", format=".1f"),
         color=alt.value("#333333"),
     )
@@ -273,8 +277,15 @@ if is_single_shop:
     sc1, sc2 = st.columns(2)
     for i, col_key in enumerate(SCORE_COLS):
         score = int(shop_row[col_key])
+        label = SCORE_LABELS[col_key]
         target_col = sc1 if i % 2 == 0 else sc2
-        target_col.metric(label=SCORE_LABELS[col_key], value=f"{score} / 100")
+        with target_col:
+            if score < THRESHOLD_AT_RISK:
+                st.error(f"**{label}**\n\n**{score}** / 100 — 🔴 At Risk")
+            elif score < THRESHOLD_READY:
+                st.warning(f"**{label}**\n\n**{score}** / 100 — 🟡 Needs Attention")
+            else:
+                st.success(f"**{label}**\n\n**{score}** / 100 — 🟢 Ready")
 
 else:
     st.subheader("Shop Readiness Table")
