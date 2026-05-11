@@ -107,4 +107,3 @@ Based on that review, I made updates to the app, including adding shop names und
 This project helped me better understand how AI coding tools can be used to create practical tools for hospitality and QSR operations. The most valuable part of the process was learning how to prompt the AI, especially more specifically in an advanced platform like Claude, review what it built, and continue improving the app based on real operational needs and what I would want to utilize a tool like this for in my day-to-day role.
 
 For me, the project aligned well with field readiness and product launch execution because it showed how a simple dashboard can turn launch information into more actionable insights for leaders.
-
