@@ -1,4 +1,3 @@
-
 # QSR LTO Field Readiness Dashboard
 
 ## Project Overview
@@ -49,12 +48,12 @@ These tiers are meant to help leaders prioritize where to spend time before an L
 
 - Overall readiness score by shop
 - System-wide readiness summary
-- Risk tier summary
-- Category score chart
-- Shop-level readiness table
-- Single-shop scorecard view
+- Risk tier summary with shop names listed per tier
+- Category score chart sorted by weakest areas first
+- Shop-level readiness table with Business Coach column
+- Single-shop scorecard with color-coded category scores
 - Top risk areas
-- Recommended next actions/action items based on low-scoring categories
+- Recommended next actions based on low-scoring categories
 
 ## How to Use the App
 
@@ -105,6 +104,6 @@ Based on that review, I made updates to the app, including adding shop names und
 
 ## Project Reflection
 
-This project helped me better understand how AI coding tools can be used to create practical tools for hospitality and QSR operations. The most valuable part of the process was learning how to prompt the AI, especially more specifically in an advanced platform like Claude, review what it built, and continue improving the app based on real operational needs and what I would want to utilize a tool like this for in my day-to-day role. 
+This project helped me better understand how AI coding tools can be used to create practical tools for hospitality and QSR operations. The most valuable part of the process was learning how to prompt the AI, especially more specifically in an advanced platform like Claude, review what it built, and continue improving the app based on real operational needs and what I would want to utilize a tool like this for in my day-to-day role.
 
 For me, the project aligned well with field readiness and product launch execution because it showed how a simple dashboard can turn launch information into more actionable insights for leaders.
