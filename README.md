@@ -17,7 +17,7 @@ This dashboard was created as a practical example of how field leaders could use
 
 ## What the App Does
 
-The dashboard allows users to review launch readiness across 15 fictional shop locations. Users can view all shops at once or select one specific shop from the sidebar.
+The dashboard allows users to review launch readiness across 35 fictional shop locations across 8 fictional regions. Users can view all shops at once, filter by a specific region, or drill into one shop from the sidebar.
 
 The app evaluates each shop across eight readiness categories:
 
@@ -30,7 +30,9 @@ The app evaluates each shop across eight readiness categories:
 - Recipe / Process Confidence
 - Team Communication
 
-The app then calculates an overall readiness score and assigns each shop a "launch support tier".
+The app then calculates an overall readiness score and assigns each shop a launch support tier.
+
+Each of the 8 fictional regions also has an assigned Business Coach. This was added to make the sample data feel more like a realistic field operations structure, where coaches support multiple shop locations within a region.
 
 ## Launch Support Tiers
 
@@ -57,19 +59,20 @@ These tiers are meant to help leaders prioritize where to spend time before an L
 ## How to Use the App
 
 1. Open the Streamlit app.
-2. Use the sidebar to select **All Shops** or one specific shop.
-3. Review the KPI cards at the top of the dashboard.
-4. Look at the category score chart to identify the strongest and weakest readiness areas.
-5. Review the risk tier summary to see which shops may need support.
-6. Open the recommended next actions section to see practical steps leaders could take before launch.
+2. Use the **Region** filter in the sidebar to select **All Regions** or a specific region.
+3. Use the **Shop** filter to view all shops in the selected region or drill into one specific shop.
+4. Review the KPI cards at the top of the dashboard.
+5. Look at the category score chart to identify the strongest and weakest readiness areas.
+6. Review the launch support tier summary to see which shops may need support.
+7. Open the recommended next actions section to see practical steps leaders could take before launch.
 
 ## Data Used
 
-The app uses AI-generated sample data for 15 fictional shop locations. The data is stored in:
+The app uses AI-generated sample data for 35 fictional shop locations across 8 fictional regions. The data is stored in:
 
 `data_ai/shop_readiness.csv`
 
-The data includes fictional shop names, regions, manager names, and readiness scores. This data was created for demonstration purposes only and should not be interpreted as real operational data.
+The data includes fictional shop names, regions, Business Coach names, manager names, and readiness scores for each of the eight readiness categories. This data was created for demonstration purposes only and should not be interpreted as real operational data.
 
 ## How the Overall Score Works
 
@@ -84,6 +87,12 @@ The app includes rule-based recommendations. If a readiness category score is be
 For example, if a shop has a low POS/Menu Readiness score, the app may recommend running a POS audit and testing the LTO build path, modifiers, pricing, and order flow before launch.
 
 These recommendations are meant to reflect practical field operations follow-up before a product launch.
+
+## Custom Comment
+
+For the optional custom comment portion, I created `/launch-review`. This comment reviews the app from the perspective of a field operations leader preparing for a QSR LTO launch. I used it to evaluate whether the dashboard was practical, clear, and useful for identifying launch readiness gaps.
+
+Based on that review, I made updates to the app, including adding shop names under each Launch Support Tier and adding clearer visual indicators in the single-shop scorecard.
 
 ## Tools Used
 
