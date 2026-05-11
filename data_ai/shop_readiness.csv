@@ -1,0 +1,16 @@
+shop_id,shop_name,region,manager_name,training_completion,product_availability,signage_materials,pos_menu_readiness,staffing_confidence,equipment_smallwares,recipe_process_confidence,team_communication
+S001,The Harborfront,Northeast,Denise Okafor,88,91,72,90,75,87,89,92
+S002,Ridgeway & Oak,Northeast,Marcus Tillman,62,70,48,68,52,64,60,58
+S003,Peachtree Crossing,Southeast,Priya Venkat,78,85,74,88,69,82,81,84
+S004,The Pinebrook,Southeast,Anthony Russo,52,58,42,60,46,54,50,55
+S005,Westview Commons,Midwest,Linda Xu,90,88,92,95,89,91,93,90
+S006,Flatlands Social,Midwest,Jared Holbrook,72,70,64,74,68,71,70,73
+S007,Verde Mesa,West,Carmen Delgado,84,79,80,83,74,78,82,85
+S008,Clearwater Landing,West,Devon Pritchard,46,52,38,48,42,50,44,47
+S009,Northgate Square,Northeast,Fatima Al-Hassan,76,78,65,80,68,75,76,79
+S010,Bayou Bend,Southeast,Clarence Dupont,65,70,56,67,54,63,62,66
+S011,Silver Peak,West,Rosario Mendieta,92,94,88,91,90,93,91,95
+S012,The Lakefront,Midwest,Sandra Kowalski,55,60,48,63,50,57,54,59
+S013,Thornfield & Elm,Northeast,Bruce Yamamoto,80,77,75,85,73,81,80,83
+S014,Gulf & Coastal,Southeast,Tanya Brathwaite,63,68,52,71,58,65,59,63
+S015,Canyon Ridge,West,Eli Nakashima,73,70,66,78,66,72,70,74
