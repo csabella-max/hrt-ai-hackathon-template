@@ -4,7 +4,7 @@
 
 The QSR LTO Field Readiness Dashboard is a simple Streamlit web app designed to help field operations leaders evaluate shop readiness before a limited-time offer launch.
 
-The purpose of this project is to create a tool that mirrors the readiness checks that often occur before a new product or campaign goes live at the Shop Level of a Coffee QSR Drive Thru Concept. Instead of using a single overall score to assess launch readiness, the dashboard breaks readiness into specific operational categories so leaders can quickly see which shops are ready, which need support, and which areas may pose launch risk.
+This project was built to mirror the type of readiness checks that happen before a new product or campaign goes live at the shop level within a coffee-focused QSR drive-thru concept. Instead of using a single overall score to assess launch readiness, the dashboard breaks readiness into specific operational categories so leaders can quickly see which shops are ready, which need support, and which areas may pose launch risk.
 
 This project uses only sample, fictional data. No real companies, employees, shops, or confidential operational data are included.
 
@@ -40,7 +40,7 @@ Each shop is placed into one of four launch support tiers:
 - **Ready**: The shop has strong overall readiness and no major weak areas/categories.
 - **Monitor**: The shop is mostly ready but may need some follow-up.
 - **Needs Support**: The shop has readiness gaps that should be addressed before launch.
-- **At Risk**: The shop has a low readiness score and needs immediate support before launch, or it will not launch on time at this location.
+- **At Risk**: The shop has a low readiness score and may need immediate support before launch.
 
 These tiers are meant to help leaders prioritize where to spend time before an LTO goes live.
 
@@ -104,6 +104,4 @@ Based on that review, I made updates to the app, including adding shop names und
 
 ## Project Reflection
 
-This project helped me better understand how AI coding tools can be used to create practical tools for hospitality and QSR operations. The most valuable part of the process was learning how to prompt the AI, especially more specifically in an advanced platform like Claude, review what it built, and continue improving the app based on real operational needs and what I would want to utilize a tool like this for in my day-to-day role.
-
-For me, the project aligned well with field readiness and product launch execution because it showed how a simple dashboard can turn launch information into more actionable insights for leaders.
+This project helped me see how AI coding tools can turn an operations idea into a working prototype pretty quickly. The most valuable part was learning how to be specific with Claude, review what it built, and keep improving the app based on what would actually be useful in a field operations setting.
